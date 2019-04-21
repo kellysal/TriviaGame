@@ -13,7 +13,7 @@ This assignment required me to create a guessing game using timers.
 3. Good Luck!
 
 *Click the following link to play the game!*
-https://kellysal.github.io/unit-4-game/
+https://kellysal.github.io/TriviaGame/
 
 ## Built Using:
 *HTML
