@@ -24,11 +24,11 @@ $(document).ready(function () {
         var answer = $('.answer');
         for (var i = 0; i < answerCounter.length; i++) {
             if (chosenAnswer === answerCounter[i].answer && answerCounter[i].value === true) {
-                clearInterval(clock);
+                // clearInterval(clock);
                 var right = $(this).attr('class', 'right-answer answer');
                 rightAnswer();
             } else if (chosenAnswer === answerCounter[i].answer && answerCounter[i].value === false) {
-                clearInterval(clock);
+                // clearInterval(clock);
                 $(this).attr('class', 'wrong-answer answer');
                 $('.first-answer').css('background-color', 'green');
                 $('.first-answer').css('color', 'white');
@@ -45,14 +45,14 @@ $(document).ready(function () {
 
 function rightAnswer() {
     correctCounter++;
-    $('.time').html(timer);
+    // $('.time').html(timer);
     $('.right').html('<p>Right answers: ' + correctCounter + '</p><br>');
     setTimeout(questionCounter, 2000);
 }
 
 function wrongAnswer() {
     incorrectCounter++;
-    $('.time').html(timer);
+    // $('.time').html(timer);
     $('.wrong').html('<p>Wrong answers: ' + incorrectCounter + '</p>');
     setTimeout(questionCounter, 2000);
 }
@@ -71,7 +71,7 @@ function unanswered() {
 function startGame() {
     $('.start-page').css('display', 'none');
     $('.questions-page').css('visibility', 'visible');
-    $('.timer').html('<p>Time remaining: <span class="time">30</span></p>');
+    $('.timer').html('<p>Time remaining: <span class="time">' + timer + '</span></p>');
 
     $('.question').html(questions[counter].question);
     var showingAnswers =
@@ -94,8 +94,8 @@ function questionCounter() {
     if (counter < 6) {
         counter++;
         startGame();
-        timer = 30;
-        timerHolder();
+        // timer = 30;
+        // timerHolder();
     } else {
         finishGame();
     }
@@ -103,11 +103,15 @@ function questionCounter() {
 
 // Timer function
 function timerHolder() {
-    clearInterval(clock);
-    clock = setInterval(seconds, 1000);
+    // clearInterval(clock);
+
+    if (clock === undefined) {
+        clock = setInterval(seconds, 1000);
+    }
+
     function seconds() {
         if (timer === 0) {
-            clearInterval(clock);
+            // clearInterval(clock);
             unanswered();
         } else if (timer > 0) {
             timer--;
@@ -135,5 +139,5 @@ function resetGame() {
     unansweredCounter = 0;
     timer = 30;
     startGame();
-    timerHolder();
+    // timerHolder();
 }
